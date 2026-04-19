@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.innerText = 'Autenticando...';
 
-            const response = await fetch('http://localhost:3000/api/login', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.error('[ERROR] Erro na comunicação:', err);
-            showToast('Erro ao conectar ao servidor', 'error');
+            showToast('Ocorreu um erro interno. Por favor, contacte o administrador do sistema.', 'error');
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerText = originalText;

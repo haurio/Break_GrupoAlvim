@@ -1,5 +1,5 @@
 // ===== API & AUTH SYSTEM =====
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 
 function getAuthHeader() {
   const token = localStorage.getItem('bk_token');
@@ -28,7 +28,7 @@ async function apiFetch(endpoint, options = {}) {
     return data;
   } catch (err) {
     console.error(`[API ERROR] Falha ao comunicar com ${endpoint}:`, err);
-    showToast('Erro de comunicação com o servidor', 'error');
+    showToast('Ocorreu um erro interno. Por favor, contacte o administrador do sistema.', 'error');
     return null;
   }
 }
