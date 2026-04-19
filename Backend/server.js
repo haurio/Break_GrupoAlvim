@@ -104,12 +104,7 @@ app.post('/api/login', async (req, res) => {
 
         const user = result.rows[0];
         
-        let isValid = false;
-        if (user.password_hash.startsWith('pbkdf2')) {
-            isValid = password === 'admin' || password === '123456'; 
-        } else {
-            isValid = await bcrypt.compare(password, user.password_hash);
-        }
+        const isValid = await bcrypt.compare(password, user.password_hash);
 
         if (!isValid) {
             logger.warn(`Login falhou: Senha incorreta para o utilizador "${username}".`);
